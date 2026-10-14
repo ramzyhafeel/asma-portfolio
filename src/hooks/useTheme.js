@@ -6,9 +6,8 @@ function getInitialTheme() {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved === "light" || saved === "dark") return saved;
 
-  // If nothing saved, use OS preference
-  const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
-  return prefersDark ? "dark" : "light";
+  // Default to light warm ivory palette
+  return "light";
 }
 
 export function useTheme() {
