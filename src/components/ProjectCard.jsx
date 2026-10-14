@@ -43,9 +43,23 @@ export default function ProjectCard({ project, index = 0 }) {
           {title}
         </h3>
 
-        <p className="mt-2.5 flex-1 text-sm leading-relaxed text-(--text-secondary)">
+        <p className="mt-2.5 text-sm leading-relaxed text-(--text-secondary)">
           {description}
         </p>
+
+        {/* Project Feature Bullets */}
+        {project.highlights && project.highlights.length > 0 && (
+          <ul className="mt-3.5 space-y-2 text-xs text-(--text-secondary)">
+            {project.highlights.map((bullet, idx) => (
+              <li key={idx} className="flex items-start gap-2">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-(--secondary)" />
+                <span className="leading-relaxed">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="flex-1" />
 
         {/* Tech tags */}
         <div className="mt-5 flex flex-wrap gap-1.5">
