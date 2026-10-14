@@ -274,17 +274,15 @@ export default function Hero() {
             <span className="block text-[#9E8472]">Fathima Asma.</span>
           </h1>
 
-          {/* Secondary Heading: Software Engineering Undergraduate */}
+          {/* Secondary Heading: HNDIT Undergraduate & Executive Professional */}
           <h2 className="mt-4 sm:mt-5 font-sans text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold tracking-tight text-[#302824] leading-[1.18]">
-            Software Engineering
-            <span className="block">Undergraduate</span>
+            HNDIT Undergraduate
+            <span className="block text-[#9E8472]">&amp; Executive Professional</span>
           </h2>
 
           {/* Description Paragraph */}
           <p className="mt-4 sm:mt-5 max-w-lg text-sm sm:text-base leading-relaxed text-[#302824]/85">
-            Passionate about building meaningful digital solutions, with hands-on project
-            experience and a strong desire to learn, collaborate, and grow. Currently seeking
-            an internship opportunity.
+            Motivated and detail-oriented undergraduate student pursuing HNDIT at SLIATE, with a strong background in English communication, organization, and teamwork. Completed a Diploma in English at University of Peradeniya. Actively seeking to contribute to Royal Travels as a Female Executive in a remote role.
           </p>
 
           {/* Call to Action Buttons */}
@@ -295,7 +293,7 @@ export default function Hero() {
               onClick={(e) => handleScrollTo(e, "#projects")}
               className="inline-flex items-center gap-2 rounded-full bg-[#302824] px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1E1916] hover:scale-[1.02] active:scale-95"
             >
-              <span>Explore My Projects</span>
+              <span>Explore My Background</span>
               <ArrowRight className="h-4 w-4" />
             </a>
 
@@ -313,7 +311,7 @@ export default function Hero() {
           {/* Availability Indicator */}
           <div className="mt-6 sm:mt-7 flex items-center gap-2.5 text-xs sm:text-sm font-medium text-[#302824]">
             <span className="h-2.5 w-2.5 rounded-full bg-[#10B981]" />
-            <span>Open to Internship Opportunities</span>
+            <span>Open to Remote &amp; Executive Opportunities</span>
           </div>
         </motion.div>
       </div>

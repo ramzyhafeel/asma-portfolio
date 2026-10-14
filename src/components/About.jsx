@@ -50,12 +50,12 @@ export default function About() {
                   <div>
                     <p className="text-xs font-bold text-(--accent)">Fathima Asma</p>
                     <p className="text-[11px] text-(--muted)">
-                      Software Engineering Undergraduate • SLIIT
+                      HNDIT Undergraduate • SLIATE
                     </p>
                   </div>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[10px] font-semibold text-(--accent) shadow-xs dark:bg-[#342D28] dark:text-white">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[10px] font-semibold text-(--accent) shadow-xs">
                     <GraduationCap className="h-3 w-3 text-(--secondary)" />
-                    Class of 2027
+                    Class of 2026
                   </span>
                 </div>
               </div>

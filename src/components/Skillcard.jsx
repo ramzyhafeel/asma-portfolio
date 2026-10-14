@@ -1,52 +1,68 @@
 import { motion } from "framer-motion";
 import {
-  SiReact,
-  SiNodedotjs,
-  SiPython,
-  SiMongodb,
-  SiTailwindcss,
-  SiJavascript,
-  SiTypescript,
-  SiGit,
-  SiDocker,
-  SiFigma,
-  SiVite,
-  SiFirebase,
-  SiVercel,
-  SiPostgresql,
-  SiSpring,
-  SiDotnet,
-  SiPhp,
-  SiKotlin,
-  SiPostman,
-  SiExpress,
-  SiNextdotjs,
-  SiSqlite,
-} from "react-icons/si";
+  MessageSquare,
+  Users,
+  FileText,
+  Award,
+  Presentation,
+  CalendarCheck,
+  Clock,
+  ListTodo,
+  UserCheck,
+  Briefcase,
+  Table,
+  Globe,
+  Mail,
+  Video,
+  Laptop,
+  Code,
+  Languages,
+  Sparkles,
+  Compass,
+  RefreshCw,
+  CheckCircle2,
+  Lightbulb,
+} from "lucide-react";
 
 export const skillIcons = {
-  Java: SiSpring,
-  "C#": SiDotnet,
-  PHP: SiPhp,
-  JavaScript: SiJavascript,
-  TypeScript: SiTypescript,
-  Python: SiPython,
-  React: SiReact,
-  "Node.js": SiNodedotjs,
-  Express: SiExpress,
-  "Next.js": SiNextdotjs,
-  MongoDB: SiMongodb,
-  PostgreSQL: SiPostgresql,
-  SQLite: SiSqlite,
-  Firebase: SiFirebase,
-  "Tailwind CSS": SiTailwindcss,
-  Git: SiGit,
-  Docker: SiDocker,
-  Figma: SiFigma,
-  Vite: SiVite,
-  Vercel: SiVercel,
-  Kotlin: SiKotlin,
-  Postman: SiPostman,
+  // Communication
+  "Public Speaking": MessageSquare,
+  "Customer Interaction": Users,
+  "Professional Writing": FileText,
+  "Speech & Debate": Award,
+  "Presentation Skills": Presentation,
+  "Active Listening": MessageSquare,
+
+  // Organization
+  "Event Planning": CalendarCheck,
+  Scheduling: Clock,
+  "Task Coordination": ListTodo,
+  "Registration Desk Management": UserCheck,
+  "Time Management": Clock,
+  "Administrative Support": Briefcase,
+
+  // Technology & Tools
+  "MS Word": FileText,
+  "MS Excel": Table,
+  "MS PowerPoint": Presentation,
+  "Google Workspace": Globe,
+  "Email Etiquette": Mail,
+  "Zoom & Virtual Meetings": Video,
+  "IT Fundamentals": Laptop,
+  "Web Basics": Code,
+
+  // Languages
+  "English (Fluent)": Languages,
+  "Sinhala (Native)": Languages,
+  "Tamil (Basic)": Languages,
+
+  // Personal Strengths
+  "Self-motivated": Sparkles,
+  Independent: Compass,
+  Adaptable: RefreshCw,
+  "Team-oriented": Users,
+  "Detail-oriented": CheckCircle2,
+  "Problem Solving": Lightbulb,
 };
 
 export default function SkillCard({ name, index = 0 }) {
@@ -65,9 +81,9 @@ export default function SkillCard({ name, index = 0 }) {
         {/* Subtle Icon Box */}
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-(--surface-soft) text-(--accent) transition-all duration-200 group-hover:bg-(--secondary)/40 group-hover:scale-105">
           {Icon ? (
-            <Icon className="h-5 w-5" />
+            <Icon className="h-5 w-5 text-(--accent)" />
           ) : (
-            <span className="text-xs font-bold">{name.slice(0, 2)}</span>
+            <span className="text-xs font-bold text-(--accent)">{name.slice(0, 2)}</span>
           )}
         </div>
 

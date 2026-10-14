@@ -1,30 +1,30 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Mail } from "lucide-react";
-import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa6";
+import { FaLinkedinIn, FaPhone, FaEnvelope } from "react-icons/fa6";
 import { siteData } from "../config/siteData";
 
 const socials = [
   {
     name: "Email",
-    url: "mailto:fathima.asma.swe@gmail.com",
+    url: "mailto:asma.firouss@gmail.com",
     icon: FaEnvelope,
     colorClass: "bg-[#302824] text-white hover:bg-[#1E1916]",
     ariaLabel: "Email Fathima Asma",
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com",
+    url: "https://www.linkedin.com/in/asmafirous",
     icon: FaLinkedinIn,
     colorClass: "bg-[#0A66C2] text-white hover:bg-[#0956a3]",
     ariaLabel: "Connect with Fathima Asma on LinkedIn",
   },
   {
-    name: "GitHub",
-    url: "https://github.com",
-    icon: FaGithub,
-    colorClass: "bg-[#24292e] text-white hover:bg-black",
-    ariaLabel: "View Fathima Asma's GitHub projects",
+    name: "Phone / Call",
+    url: "tel:+94768245631",
+    icon: FaPhone,
+    colorClass: "bg-[#10B981] text-white hover:bg-[#059669]",
+    ariaLabel: "Call Fathima Asma",
   },
 ];
 

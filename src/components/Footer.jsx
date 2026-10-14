@@ -17,7 +17,7 @@ export default function Footer() {
 
         {/* Tagline */}
         <p className="mt-2 text-sm text-(--text-secondary)">
-          Software Engineering Undergraduate • Seeking Internship Opportunities
+          HNDIT Undergraduate (SLIATE) • Diploma in English (Peradeniya) • Executive Professional
         </p>
 
         {/* Social icons */}

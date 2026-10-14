@@ -7,13 +7,9 @@ import { siteData } from "../config/siteData";
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = [
-    "All",
-    "Languages",
-    "Frontend & UI",
-    "Backend & APIs",
-    "Databases & Cloud",
-  ];
+  const categories = useMemo(() => {
+    return ["All", ...siteData.skills.categories.map((c) => c.name)];
+  }, []);
 
   const filteredSkills = useMemo(() => {
     if (activeCategory === "All") {

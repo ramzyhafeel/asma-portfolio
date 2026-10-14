@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Sparkles, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Sparkles, Send } from "lucide-react";
 import Section from "./layout/Section";
 import ContactForm from "./ContactForm";
 import { siteData } from "../config/siteData";
@@ -65,20 +65,28 @@ export default function Contact() {
           />
 
           <InfoCard
+            Icon={Phone}
+            label="PHONE / CALL"
+            value={siteData.phone}
+            href={`tel:${siteData.phone}`}
+            detail="Direct call & WhatsApp"
+          />
+
+          <InfoCard
             Icon={MapPin}
             label="LOCATION"
             value={siteData.location}
             detail="Open to on-site, hybrid, and remote roles"
           />
 
-          {/* Internship Status Card */}
+          {/* Career Objective Card */}
           <div className="rounded-3xl border border-(--border-subtle) bg-(--surface-soft) p-6 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-(--accent)">
               <Sparkles className="h-4 w-4 text-(--secondary)" />
-              Internship Inquiries
+              Career Objective
             </div>
             <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
-              Currently in the 3rd year of my Software Engineering degree at SLIIT. I am excited to contribute hands-on skills in full-stack development, QA, and problem solving.
+              Undergraduate pursuing HNDIT at SLIATE with a Diploma in English from the University of Peradeniya. Actively seeking to contribute to Royal Travels as a Female Executive in a remote role.
             </p>
 
             <div className="mt-5 border-t border-(--border-subtle) pt-4">
