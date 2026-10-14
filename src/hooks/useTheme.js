@@ -1,34 +1,27 @@
 import { useEffect, useMemo, useState } from "react";
 
-const STORAGE_KEY = "theme"; // "light" | "dark"
-
-function getInitialTheme() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved === "light") return saved;
-
-  // Default to light warm ivory palette
-  return "light";
-}
+const STORAGE_KEY = "theme";
 
 export function useTheme() {
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
-
-    localStorage.setItem(STORAGE_KEY, theme);
-  }, [theme]);
+    root.classList.remove("dark");
+    if (document.body) {
+      document.body.classList.remove("dark");
+    }
+    localStorage.setItem(STORAGE_KEY, "light");
+  }, []);
 
   const api = useMemo(() => {
     return {
-      theme,
-      isDark: theme === "dark",
-      setTheme,
-      toggleTheme: () => setTheme((t) => (t === "dark" ? "light" : "dark")),
+      theme: "light",
+      isDark: false,
+      setTheme: () => {},
+      toggleTheme: () => {},
     };
-  }, [theme]);
+  }, []);
 
   return api;
 }

@@ -15,12 +15,11 @@ import heroPosterSrc from "../assets/fathima-cartoon-poster.png";
 export default function Hero() {
   const videoRef = useRef(null);
   const heroRef = useRef(null);
-  const wasAudibleBeforeScrollRef = useRef(false);
+  const wasAudibleBeforeScrollRef = useRef(true);
 
-  const [isAudible, setIsAudible] = useState(false);
+  const [isAudible, setIsAudible] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [videoError, setVideoError] = useState(false);
-  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
 
   // Smooth scroll helper
   const handleScrollTo = (e, hash) => {
@@ -30,42 +29,32 @@ export default function Hero() {
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  // Run video with sound on mount, with graceful browser autoplay fallback & interaction unmuting
+  // Run video with sound on mount: default is unmuted autoplay
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     video.volume = 1.0;
     video.loop = true;
-
-    // Attempt to run video unmuted with sound directly
     video.muted = false;
+
+    // Immediately play unmuted with sound
     const playPromise = video.play();
 
     if (playPromise !== undefined) {
       playPromise
         .then(() => {
-          // Browser permitted unmuted playback
           setIsAudible(true);
           setIsPlaying(true);
-          setAutoplayBlocked(false);
           wasAudibleBeforeScrollRef.current = true;
         })
-        .catch(() => {
-          // Browser autoplay policy restricted unmuted playback before user gesture.
-          // Fallback: run video muted immediately so the character moves and animates...
+        .catch((err) => {
+          console.warn("Browser autoplay policy prevented audio before gesture:", err);
+          // Fallback if browser blocks unmuted play before first interaction:
           video.muted = true;
-          setAutoplayBlocked(true);
-          setIsAudible(false);
+          video.play().catch(() => {});
 
-          video.play().then(() => {
-            setIsPlaying(true);
-          }).catch(() => {
-            setIsPlaying(false);
-          });
-
-          // ...and immediately unmute and play with sound upon the very first user interaction anywhere
-          const unmuteOnFirstInteraction = () => {
+          const startAudioOnGesture = () => {
             if (videoRef.current) {
               videoRef.current.muted = false;
               videoRef.current.volume = 1.0;
@@ -74,37 +63,24 @@ export default function Hero() {
                 .then(() => {
                   setIsAudible(true);
                   setIsPlaying(true);
-                  setAutoplayBlocked(false);
                   wasAudibleBeforeScrollRef.current = true;
                 })
                 .catch(() => {});
             }
-            cleanupListeners();
+            cleanup();
           };
 
-          const cleanupListeners = () => {
-            window.removeEventListener("click", unmuteOnFirstInteraction);
-            window.removeEventListener("touchstart", unmuteOnFirstInteraction);
-            window.removeEventListener("keydown", unmuteOnFirstInteraction);
-            window.removeEventListener("pointerdown", unmuteOnFirstInteraction);
+          const cleanup = () => {
+            window.removeEventListener("click", startAudioOnGesture);
+            window.removeEventListener("touchstart", startAudioOnGesture);
+            window.removeEventListener("keydown", startAudioOnGesture);
+            window.removeEventListener("pointerdown", startAudioOnGesture);
           };
 
-          window.addEventListener("click", unmuteOnFirstInteraction, {
-            once: true,
-            passive: true,
-          });
-          window.addEventListener("touchstart", unmuteOnFirstInteraction, {
-            once: true,
-            passive: true,
-          });
-          window.addEventListener("keydown", unmuteOnFirstInteraction, {
-            once: true,
-            passive: true,
-          });
-          window.addEventListener("pointerdown", unmuteOnFirstInteraction, {
-            once: true,
-            passive: true,
-          });
+          window.addEventListener("click", startAudioOnGesture, { once: true, passive: true });
+          window.addEventListener("touchstart", startAudioOnGesture, { once: true, passive: true });
+          window.addEventListener("keydown", startAudioOnGesture, { once: true, passive: true });
+          window.addEventListener("pointerdown", startAudioOnGesture, { once: true, passive: true });
         });
     }
   }, []);
@@ -183,7 +159,6 @@ export default function Hero() {
         video.play().catch(() => {});
       }
       setIsAudible(true);
-      setAutoplayBlocked(false);
       wasAudibleBeforeScrollRef.current = true;
     }
   };
@@ -202,7 +177,6 @@ export default function Hero() {
       .then(() => {
         setIsPlaying(true);
         setIsAudible(true);
-        setAutoplayBlocked(false);
         wasAudibleBeforeScrollRef.current = true;
       })
       .catch(() => {});
@@ -384,14 +358,8 @@ export default function Hero() {
                 </>
               ) : (
                 <>
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#9E8472] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#9E8472]" />
-                  </span>
                   <VolumeX className="h-4 w-4 text-white/80" />
-                  <span>
-                    {autoplayBlocked ? "Tap for Sound" : "Enable Video Sound"}
-                  </span>
+                  <span>Muted · Click to Unmute</span>
                 </>
               )}
             </button>
